@@ -1,0 +1,19 @@
+.cover_img {
+  padding: 8px 8px 5px 8px;
+  /* margin-bottom: var(--block-bottom-margin); */
+  border-radius: var(--block-border-radius) var(--block-border-radius) 0 0;
+  background-color: var(--block-background-color);
+}
+
+.cover_img > img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 300px;
+}
+
+.avatar {
+  padding: 8px;
+  /* margin-bottom: var(--block-bottom-margin);
+  border-radius: var(--block-border-radius); */
+  background-color: var(--block-background-color);
+}

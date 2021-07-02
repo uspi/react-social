@@ -1,0 +1,35 @@
+.avatar {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.avatar img{
+    background-size: cover;
+    height: 50px;
+}
+
+.dialogItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+
+    border: solid;
+    border-color: rgb(129, 129, 129);
+    border-width: 0px;
+    border-top-width: 0.1rem;
+}
+
+.dialogItem a{
+    color: black;
+    text-decoration: none;
+}
+
+.dialogItem a.activeLink{
+    color: #56DAFB;
+  }

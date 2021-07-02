@@ -1,0 +1,21 @@
+.sidebarItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.avatar {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.avatar img{
+    background-size: cover;
+    height: 50px;
+}

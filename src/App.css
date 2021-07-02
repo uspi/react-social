@@ -1,0 +1,60 @@
+:root {
+  --block-border-radius: 5px;
+  --block-background-color: #fff;
+  --block-bottom-margin: 10px;
+}
+
+.app-wrapper {
+  background-color: #dae0e6;
+  min-height: 100vh;
+}
+
+.app-wrapper-content {
+  grid-area: content;
+}
+
+.main {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 3fr 2fr 5fr 2fr 3fr;
+  grid-template-areas:
+    "header header header header header"
+    ". nav content content ."
+    ". sidebar content content ."
+    ". . content content .";
+  grid-auto-rows: auto;
+}
+
+@media (max-width: 1300px) {
+  .main {
+    grid-template-columns: 2fr 2fr 5fr 2fr 2fr;
+  }
+}
+
+@media (max-width: 1100px) {
+  .main {
+    grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 0.3fr 2fr 5fr 2fr 0.3fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .main {
+    grid-template-columns: 0.2fr 2fr 6fr 2fr 0.2fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .main {
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "content content";
+  }
+}
