@@ -5,7 +5,6 @@ import SidebarItem from "./SidebarItem/SidebarItem";
 const Sidebar = (props) => {
 
     // let sidebar = props.state.sidebar;
-
     let sidebarElements = props.state.friends.map(e => <SidebarItem id={e.id} name={e.name} />);
     return (
         <div className={style.sidebar}>

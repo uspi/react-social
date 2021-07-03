@@ -14,11 +14,8 @@ const App = (props) => {
   let profilePage = props.state.profilePage;
   let dialogsPage = props.state.dialogsPage;
   let sidebar = props.state.sidebar;
-  // func
-  let addPost = props.addPost;
-  let addMessage = props.addMessage;
-  let updateNewPostText = props.updateNewPostText;
-  let updateNewMessageText = props.updateNewMessageText;
+
+  let dispatch = props.dispatch;
 
   return (
     <div className="app-wrapper">
@@ -34,9 +31,8 @@ const App = (props) => {
           path="/profile"
           render={() => (
             <Profile
-              profilePage={profilePage}
-              addPost={addPost}
-              updateNewPostText={updateNewPostText}
+              dispatch={dispatch}
+              state={profilePage}
             />
           )}
         />
@@ -45,8 +41,7 @@ const App = (props) => {
           render={() => (
             <Dialogs
               state={dialogsPage}
-              addMessage={addMessage}
-              updateNewMessageText={updateNewMessageText}
+              dispatch={dispatch}
             />
           )}
         />
