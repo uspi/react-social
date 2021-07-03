@@ -1,18 +1,15 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-    padding: 8px;
-    margin-bottom: var(--block-bottom-margin);
-    border-radius: var(--block-border-radius);
-    background-color: var(--block-background-color);
   grid-area: content;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  padding: 8px;
+  margin-bottom: var(--block-bottom-margin);
+  border-radius: var(--block-border-radius);
+  background-color: var(--block-background-color);
   box-shadow: var(--block-box-shadow);
 }
 
-.dialogsItems{
-    margin-right: 5px;
+.dialogsItems {
+  margin-right: 5px;
 }
 
-.messagesItems{
-    margin-left: 5px;
-}

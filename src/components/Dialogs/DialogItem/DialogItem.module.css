@@ -19,10 +19,10 @@
     justify-content: start;
     align-items: flex-start;
 
-    border: solid;
+    /* border: solid;
     border-color: rgb(129, 129, 129);
     border-width: 0px;
-    border-top-width: 0.1rem;
+    border-top-width: 0.1rem; */
 }
 
 .dialogItem a{
@@ -33,3 +33,4 @@
 .dialogItem a.activeLink{
     color: #56DAFB;
   }
+  

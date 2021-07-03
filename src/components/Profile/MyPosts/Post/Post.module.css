@@ -1,12 +1,18 @@
 .item {
     display: flex;
     flex-direction: row;
-    padding: 8px;
+    padding: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+
     margin-bottom: var(--block-bottom-margin);
     border-radius: var(--block-border-radius);
     background-color: var(--block-background-color);
+    box-shadow: var(--block-box-shadow);
+}
+.avatar img{
+    background-size: cover;
+    height: 50px;
 }
 
-.item img {
-    width: 50px;
 }

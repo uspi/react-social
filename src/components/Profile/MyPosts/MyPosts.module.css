@@ -1,8 +1,7 @@
   box-shadow: var(--block-box-shadow);
 .posts_block__label {
-    padding: 8px;
-    margin: 0px;
-    background-color: var(--block-background-color);
+  padding: 8px;
+  margin: 0px;
 }
 
 .posts {
@@ -10,8 +9,7 @@
 }
 
 .post_new_block {
-    padding: 8px;
-    margin-bottom: var(--block-bottom-margin);
-    border-radius: 0 0 var(--block-border-radius) var(--block-border-radius);
-    background-color: var(--block-background-color);
+  padding: 8px;
+  margin-bottom: var(--block-bottom-margin);
+}
 }
