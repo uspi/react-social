@@ -10,9 +10,23 @@
     background-color: var(--block-background-color);
     box-shadow: var(--block-box-shadow);
 }
+
+.avatar {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
 .avatar img{
     background-size: cover;
     height: 50px;
 }
 
+.likesCounter{
+    align-self: flex-end;
+    margin-left: auto;
 }

@@ -21,6 +21,7 @@
 }
 
 .messageContainer {
+    margin: 5px;
     order: 1;
     display: flex;
     flex-direction: column;
@@ -54,9 +55,19 @@
 }
 
 .messageTextContainer{
-    padding: 0px;
+    background-color: #fff;
+    padding: 2px;
     border: solid;
     border-color: rgb(129, 129, 129);
     border-width: 0.1rem;
     border-radius: 5px;
 }
+
+@media (max-width: 460px) {
+    .avatarContainer {
+      display: none;
+    }
+    .avatarContainerOwner {
+        display: none;
+      }
+  }

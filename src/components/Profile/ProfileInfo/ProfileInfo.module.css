@@ -1,4 +1,10 @@
+.profileInfo {
+  margin-bottom: 10px;
+  border-radius: var(--block-border-radius);
+  background-color: var(--block-background-color);
   box-shadow: var(--block-box-shadow);
+}
+
 .cover_img {
   padding: 8px 8px 5px 8px;
 }
