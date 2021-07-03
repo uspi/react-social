@@ -1,6 +1,8 @@
 .settings {
+    grid-area: content;
     padding: 8px;
     margin-bottom: var(--block-bottom-margin);
     border-radius: var(--block-border-radius);
     background-color: var(--block-background-color);
+    box-shadow: var(--block-box-shadow);
 }

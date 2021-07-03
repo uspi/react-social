@@ -4,10 +4,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+  grid-area: sidebar;
 
     border-radius: var(--block-border-radius);
     background-color: var(--block-background-color);
     margin-bottom: var(--block-bottom-margin);
+  box-shadow: var(--block-box-shadow);
 }
 
 @media (max-width: 700px) {

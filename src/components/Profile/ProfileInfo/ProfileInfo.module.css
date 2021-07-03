@@ -1,3 +1,4 @@
+  box-shadow: var(--block-box-shadow);
 .cover_img {
   padding: 8px 8px 5px 8px;
   /* margin-bottom: var(--block-bottom-margin); */
