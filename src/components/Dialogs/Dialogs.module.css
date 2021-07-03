@@ -5,6 +5,8 @@
     margin-bottom: var(--block-bottom-margin);
     border-radius: var(--block-border-radius);
     background-color: var(--block-background-color);
+  grid-area: content;
+  box-shadow: var(--block-box-shadow);
 }
 
 .dialogsItems{
