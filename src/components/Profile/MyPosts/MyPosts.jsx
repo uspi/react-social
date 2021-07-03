@@ -23,18 +23,21 @@ const MyPosts = (props) => {
 
     return (
         <div>
-            <h3 className={s.posts_block__label}>
-                My posts
-            </h3>
-            <div className={s.post_new_block}>
-                <div>
-                    <textarea></textarea>
-                </div>
-                <div>
-                    <button>Add post</button>
-                </div>
+            <div className={s.textAreaLabelBlock}>
+                <h3 className={s.posts_block__label}>
+                    My posts
+                </h3>
 
+                <div className={s.post_new_block}>
+                    <div className={s.textAreaContainer}>
+                        <textarea ref={newPostElement}></textarea>
+                    </div>
+
+                    <div>
                         <button onClick={addPost}>Add post</button>
+                    </div>
+
+                </div>
             </div>
 
             <div className={s.posts}>
