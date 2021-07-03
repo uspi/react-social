@@ -1,14 +1,16 @@
 import React from "react";
-import s from "./Header.module.css";
+import style from "./Header.module.css";
 import tLogo from "./../../imgs/tLogo512.png";
 
 const Header = () => {
     return (
-        <header className={s.header}>
-            <div className={s.logo}>
-                <img src={tLogo} />
-            </div>
-        </header>
+        <div className={style.headerContainer}>
+            <header className={style.header}>
+                <div className={style.logo}>
+                    <img src={tLogo} />
+                </div>
+            </header>
+        </div>
     );
 }
 
