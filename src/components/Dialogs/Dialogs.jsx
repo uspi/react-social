@@ -9,21 +9,20 @@ import {
 } from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogs.map((dialog) => (
+  let dialogsElements = props.dialogs.map((dialog) => (
     <DialogItem id={dialog.id} name={dialog.name} />
   ));
-  let messagesElements = props.state.messages.map((message) => (
+  let messagesElements = props.messages.map((message) => (
     <Message text={message.text} />
   ));
-  let newMessageText = props.state.newMessageText;
 
   let onSendMessageClick = () => {
-    props.dispatch(addMessageCreator());
+    props.sendMessage();
   };
+
   let onNewMessageChange = (e) => {
-    //let text = newMessageElement.current.value;
     let text = e.target.value;
-    props.dispatch(updateNewMessageTextCreator(text));
+    props.updateNewMessageText(text);
   };
 
   let newMessageElement = React.createRef();
@@ -42,7 +41,7 @@ const Dialogs = (props) => {
             <textarea
               ref={newMessageElement}
               onChange={onNewMessageChange}
-              value={newMessageText}
+              value={props.newMessageText}
             />
           </div>
           <div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
 import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Header from "./components/Header/Header";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,14 +10,9 @@ import News from "./components/News/News";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
 import Sidebar from "./components/Sidebar/Sidebar";
+import store from "./redux/redux-store";
 
 const App = (props) => {
-  let profilePage = props.state.profilePage;
-  let dialogsPage = props.state.dialogsPage;
-  let sidebar = props.state.sidebar;
-
-  let dispatch = props.dispatch;
-
   return (
     <div className="app-wrapper">
       <div className="header">
@@ -25,24 +21,18 @@ const App = (props) => {
 
       <div className="app-wrapper-content">
         <Navbar />
-        <Sidebar state={sidebar} />
+        <Sidebar store={props.store} />
 
         <Route
           path="/profile"
           render={() => (
-            <Profile
-              dispatch={dispatch}
-              state={profilePage}
-            />
+            <Profile store={props.store} />
           )}
         />
         <Route
           path="/dialogs"
           render={() => (
-            <Dialogs
-              state={dialogsPage}
-              dispatch={dispatch}
-            />
+            <DialogsContainer store={props.store} />
           )}
         />
         <Route path="/news" render={() => <News />} />

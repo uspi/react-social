@@ -3,9 +3,9 @@ import style from "./Sidebar.module.css";
 import SidebarItem from "./SidebarItem/SidebarItem";
 
 const Sidebar = (props) => {
+    let state = props.store.getState();
 
-    // let sidebar = props.state.sidebar;
-    let sidebarElements = props.state.friends.map(e => <SidebarItem id={e.id} name={e.name} />);
+    let sidebarElements = state.sidebar.friends.map(e => <SidebarItem id={e.id} name={e.name} />);
     return (
         <div className={style.sidebar}>
             {sidebarElements}
