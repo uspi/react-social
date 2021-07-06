@@ -1,0 +1,59 @@
+.usersContainer{
+    grid-area: content;
+    /* padding: 8px;
+    margin-bottom: var(--blocks-between-distance);
+    border-radius: var(--block-border-radius);
+    background-color: var(--block-background-color);
+    box-shadow: var(--block-box-shadow); */
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-bottom: var(--blocks-between-distance);
+    border-radius: var(--block-border-radius);
+    background-color: var(--block-background-color);
+    box-shadow: var(--block-box-shadow);
+}
+
+.userPhoto {
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.userPhoto img{
+    object-fit: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.userLocation{
+    width: 120px;
+    padding-left: 10px;
+}
+
+.userDescription{
+    width: 300px;
+}
+
+.buttonContainer{
+    padding-left: 10px;
+    width: 100px;
+    margin-left: auto;
+    align-self: center;
+}
+
+.button {
+    min-width: 70px;
+}

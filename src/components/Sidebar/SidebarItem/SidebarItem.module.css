@@ -16,6 +16,7 @@
 }
 
 .avatar img{
+    object-fit: cover;
     background-size: cover;
     height: 50px;
 }
