@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   width: auto;
-  /* grid-row-end: 3; */
   padding: 8px;
   background-color: var(--block-background-color);
   border-radius: var(--block-border-radius);
