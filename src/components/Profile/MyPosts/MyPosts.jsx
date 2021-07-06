@@ -20,6 +20,8 @@ const MyPosts = (props) => {
 
   let newPostElement = React.createRef();
 
+  let newPostPlaceholder = "Enter any text!"
+
   return (
     <div>
       <div className={s.textAreaLabelBlock}>
