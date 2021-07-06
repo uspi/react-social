@@ -33,10 +33,13 @@ const MyPosts = (props) => {
               onChange={onPostChange}
               ref={newPostElement}
               value={props.newPostText}
+
+              autoComplete="off"
+              placeholder={newPostPlaceholder}
             />
           </div>
 
-          <div>
+          <div className={s.addButtons}>
             <button onClick={onAddPost}>Add post</button>
           </div>
         </div>
