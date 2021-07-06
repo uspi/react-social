@@ -8,7 +8,7 @@
 
   border-radius: var(--block-border-radius);
   background-color: var(--block-background-color);
-  margin-bottom: var(--block-bottom-margin);
+  margin-bottom: var(--blocks-between-distance);
   box-shadow: var(--block-box-shadow);
 }
 

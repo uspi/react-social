@@ -5,7 +5,7 @@
     justify-content: flex-start;
     align-items: flex-start;
 
-    margin-bottom: var(--block-bottom-margin);
+    margin-bottom: var(--blocks-between-distance);
     border-radius: var(--block-border-radius);
     background-color: var(--block-background-color);
     box-shadow: var(--block-box-shadow);

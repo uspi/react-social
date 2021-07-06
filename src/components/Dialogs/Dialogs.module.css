@@ -2,8 +2,8 @@
   grid-area: content;
   display: grid;
   grid-template-columns: 2fr 10fr;
-  padding: 8px;
-  margin-bottom: var(--block-bottom-margin);
+  /* padding: 8px; */
+  margin-bottom: var(--blocks-between-distance);
   border-radius: var(--block-border-radius);
   background-color: var(--block-background-color);
   box-shadow: var(--block-box-shadow);
@@ -13,7 +13,12 @@
   margin-right: 5px;
 }
 
+.dialogsArea{
+  padding: 5px;
+}
+
 .messagesArea {
+  padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

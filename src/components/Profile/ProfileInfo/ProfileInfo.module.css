@@ -1,15 +1,15 @@
 .profileInfo {
-  margin-bottom: 10px;
+  margin-bottom: var(--blocks-between-distance);
   border-radius: var(--block-border-radius);
   background-color: var(--block-background-color);
   box-shadow: var(--block-box-shadow);
 }
 
 .cover_img {
-  padding: 8px 8px 5px 8px;
 }
 
 .cover_img > img {
+  border-radius: var(--block-border-radius) var(--block-border-radius) 0 0;
   object-fit: cover;
   width: 100%;
   max-height: 300px;
@@ -17,7 +17,6 @@
 
 .avatar {
   padding: 8px;
-  /* margin-bottom: var(--block-bottom-margin);
+  /* margin-bottom: var(--blocks-between-distance);
   border-radius: var(--block-border-radius); */
-  
 }
