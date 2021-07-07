@@ -57,3 +57,19 @@
 .button {
     min-width: 70px;
 }
+
+.pageNumberBtn{
+    background-color: white;
+    cursor: pointer;
+    padding: 2px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.selectedPageNumberBtn{
+    background-color: rgb(253, 234, 61);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px;
+    margin: 5px;
+    border-radius: 5px;
+}
