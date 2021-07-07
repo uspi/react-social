@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Users.module.css"
+import * as axios from "axios";
 
 let Users = (props) => {
     if (props.users.length === 0) {
@@ -62,6 +63,11 @@ let Users = (props) => {
                         <div className={style.userDescription}>
                             <div>{u.fullName}</div>
                             <div>{u.status}</div>
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                this.props.setUsersTotalCount(response.data.totalCount);
+            });
 
                         </div>
                         <div className={style.userLocation}>
