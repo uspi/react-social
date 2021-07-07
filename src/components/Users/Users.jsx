@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Users.module.css"
 import * as axios from "axios";
+import userPhoto from "./../../assets/images/user-no-photo.png"
 
 let Users = (props) => {
     if (props.users.length === 0) {

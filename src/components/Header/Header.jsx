@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Header.module.css";
-import tLogo from "./../../imgs/tLogo512.png";
+import tLogo from "./../../assets/images/tLogo512.png";
 
 const Header = () => {
     return (
