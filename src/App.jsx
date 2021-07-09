@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
-import Profile from "./components/Profile/Profile";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import Settings from "./components/Settings/Settings";
 import SidebarContainer from "./components/Sidebar/SidebarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -23,9 +23,9 @@ const App = (props) => {
         <SidebarContainer store={props.store} />
 
         <Route
-          path="/profile"
+          path="/profile/:userId?"
           render={() => (
-            <Profile />
+            <ProfileContainer />
           )}
         />
         <Route

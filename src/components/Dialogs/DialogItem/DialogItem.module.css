@@ -19,11 +19,6 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-
-    /* border: solid;
-    border-color: rgb(129, 129, 129);
-    border-width: 0px;
-    border-top-width: 0.1rem; */
 }
 
 .dialogItem a{

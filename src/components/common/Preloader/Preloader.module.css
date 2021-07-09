@@ -1,0 +1,9 @@
+.imageContainer{
+    grid-area: content; 
+    display: flex;
+    justify-content: center;
+}
+
+.imageContainer img{
+    width: 100px;
+}

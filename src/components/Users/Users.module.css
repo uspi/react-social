@@ -64,6 +64,8 @@
     padding: 2px;
     margin: 5px;
     border-radius: 5px;
+    min-width: 18px;
+    text-align: center;
 }
 .selectedPageNumberBtn{
     background-color: rgb(253, 234, 61);
@@ -72,4 +74,12 @@
     padding: 2px;
     margin: 5px;
     border-radius: 5px;
+    min-width: 18px;
+    text-align: center
+}
+
+.paginationButtonsContainer{
+    padding-bottom: 10px;
+    padding-top: 0px;
+    display: flex;
 }
