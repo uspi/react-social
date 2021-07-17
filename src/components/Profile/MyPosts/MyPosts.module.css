@@ -41,6 +41,15 @@
   padding-bottom: 10px;
 }
 
+.addPostButton{
+  background-color: #198754;
+  color: #fff;
+}
+
+.addPostButton:hover{
+  background-color: #157246;
+}
+
 /* .textAreaContainer textPath:active{
   border-radius: var(--block-border-radius);
 } */
