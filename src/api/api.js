@@ -8,6 +8,10 @@ const instance = axios.create({
   },
 });
 
+const anonimInstance = axios.create({
+  baseURL: "https://social-network.samuraijs.com/api/1.0/",
+});
+
 export const usersAPI = {
   getUsers(pageNumber = 1, pageSize = 10) {
     return instance
@@ -22,6 +26,15 @@ export const usersAPI = {
   },
 
   follow(userId) {
-    return instance.post(`follow/${userId}`)
+    return instance.post(`follow/${userId}`);
+  },
+  getProfile(userId) {
+    return anonimInstance.get(`profile/${userId}`);
+  },
+};
+
+export const authAPI = {
+  me() {
+    return instance.get(`auth/me`);
   },
 };
