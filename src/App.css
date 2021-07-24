@@ -64,6 +64,7 @@ button:hover {
     "sidebar content content"
     ".       content content";
   grid-auto-rows: auto;
+  
 }
 
 @media (max-width: 700px) {

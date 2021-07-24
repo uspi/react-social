@@ -1,4 +1,6 @@
+import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import {
   sendMessageCreator,
   updateNewMessageTextCreator,
@@ -9,7 +11,8 @@ const mapStateToProps = (state) => {
   return {
     dialogs: state.dialogsPage.dialogs,
     messages: state.dialogsPage.messages,
-    newMessageText: state.dialogsPage.newMessageText
+    newMessageText: state.dialogsPage.newMessageText,
+    isAuth: state.auth.isAuth
   }
 }
 
@@ -26,6 +29,14 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+let AuthRedirectComponent = (props) => {
+  if (!props.isAuth) {
+    return <Redirect to={"/login"} />
+  };
+
+  return <Dialogs {...props} />;
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
 export default DialogsContainer;
