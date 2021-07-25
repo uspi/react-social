@@ -8,7 +8,6 @@ const Sidebar = (props) => {
         <SidebarItem key={e.id} id={e.id} name={e.name} />
     );
     return (
-
         <div className={style.sidebar}>
             {sidebarElements}
         </div>

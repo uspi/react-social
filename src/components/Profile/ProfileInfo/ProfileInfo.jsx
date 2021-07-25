@@ -1,6 +1,7 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -9,9 +10,9 @@ const ProfileInfo = (props) => {
     return (
         <div className={s.profileInfo}>
 
-            <div className={s.cover_img}>
+            {/* <div className={s.cover_img}>
                 <img src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="page top cover" />
-            </div>
+            </div> */}
 
             <div className={s.userInfoContainer}>
                 <div className={s.userMainInfo}>
@@ -34,6 +35,9 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={s.userSocial}>
 
+                </div>
+                <div>
+                    <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
                 </div>
             </div>
         </div>

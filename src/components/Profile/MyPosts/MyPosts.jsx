@@ -1,26 +1,39 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
+// form
+const AddNewPostForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div className={s.textAreaContainer}>
+        <Field component={"textarea"} name="newPostText" placeholder="Enter post text!" />
+      </div>
 
+      <div className={s.addButtons}>
+        <button className={s.addPostButton}>Add post</button>
+      </div>
+    </form>
+  );
+}
+
+// form wrapper
+const AddNewPostReduxForm = reduxForm({
+  form: "newPost"
+})(AddNewPostForm)
+
+// component
 const MyPosts = (props) => {
   // get
   let postsElements = props.posts.map((post) => (
     <Post key={post.id} id={post.id} message={post.message} likesCount={post.likesCount} />
   ));
-  
-  let onAddPost = () => {
-    props.addPost();
+
+  let onAddPost = (formData) => {
+    console.log(formData);
+    props.addPostCreator(formData.newPostText);
   };
-
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
-  };
-
-  let newPostElement = React.createRef();
-
-  let newPostPlaceholder = "Enter any text!"
 
   return (
     <div>
@@ -28,20 +41,7 @@ const MyPosts = (props) => {
         <h3 className={s.posts_block__label}>My posts</h3>
 
         <div className={s.post_new_block}>
-          <div className={s.textAreaContainer}>
-            <textarea
-              onChange={onPostChange}
-              ref={newPostElement}
-              value={props.newPostText}
-
-              autoComplete="off"
-              placeholder={newPostPlaceholder}
-            />
-          </div>
-
-          <div className={s.addButtons}>
-            <button className={s.addPostButton} onClick={onAddPost}>Add post</button>
-          </div>
+          <AddNewPostReduxForm onSubmit={onAddPost} />
         </div>
       </div>
 

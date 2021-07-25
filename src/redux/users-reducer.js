@@ -78,6 +78,7 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
+// action creators
 export const followSuccess = (userId) => ({ type: FOLLOW, userId });
 export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
@@ -99,6 +100,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   userId,
 });
 
+// thunks
 export const getUsers = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFetching(true));

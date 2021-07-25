@@ -12,6 +12,18 @@ const anonimInstance = axios.create({
   baseURL: "https://social-network.samuraijs.com/api/1.0/",
 });
 
+export const profileAPI = {
+  getProfile(userId) {
+    return anonimInstance.get(`profile/${userId}`);
+  },
+  getStatus(userId){
+    return anonimInstance.get(`profile/status/${userId}`);
+  },
+  updateStatus(status){
+    return instance.put(`profile/status`, {status: status});
+  }
+}
+
 export const usersAPI = {
   getUsers(pageNumber = 1, pageSize = 10) {
     return instance
@@ -29,7 +41,8 @@ export const usersAPI = {
     return instance.post(`follow/${userId}`);
   },
   getProfile(userId) {
-    return anonimInstance.get(`profile/${userId}`);
+    console.warn("Obsolete method. Please use profileAPI object.")
+    return profileAPI.getProfile(userId);
   },
 };
 
