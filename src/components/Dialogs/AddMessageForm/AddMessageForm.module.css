@@ -1,0 +1,8 @@
+.textAreaContainer textarea {
+    overflow: auto;
+    width: 21em;
+    height: 5em;
+    max-width: 30em;
+    resize: none;
+  }
+  
