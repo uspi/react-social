@@ -5,6 +5,7 @@ const ProfileStatusWithHooks = (props) => {
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
 
+    // after every render, if haven't dependencies
     useEffect(() => {
         setStatus(props.status);
     }, [props.status]);
