@@ -32,8 +32,6 @@ let Users = (props) => {
                             onClick={() => { props.onPageNumberChanged(p) }}>
                             {p}
                         </div>
-
-
                     ))
                 }
             </div>
