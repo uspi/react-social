@@ -1,13 +1,4 @@
-.usersContainer{
-    grid-area: content;
-    /* padding: 8px;
-    margin-bottom: var(--blocks-between-distance);
-    border-radius: var(--block-border-radius);
-    background-color: var(--block-background-color);
-    box-shadow: var(--block-box-shadow); */
-}
-
-/* .item {
+.item {
     display: flex;
     flex-direction: row;
     padding: 5px;
@@ -30,9 +21,9 @@
     display: flex;
     justify-content: center;
     margin: 5px;
-} */
+}
 
-/* .userPhoto img{
+.userPhoto img{
     object-fit: cover;
     background-position: center;
     overflow: hidden;
@@ -45,9 +36,9 @@
 
 .userDescription{
     width: 300px;
-} */
+}
 
-/* .buttonContainer{
+.buttonContainer{
     padding-left: 10px;
     width: 100px;
     margin-left: auto;
@@ -56,7 +47,4 @@
 
 .button {
     min-width: 70px;
-} */
-
-
-
+}

@@ -1,7 +1,7 @@
 import { stopSubmit } from "redux-form";
 import { authAPI } from "../api/api";
 
-const SET_USER_DATA = "SET-USER-DATA";
+const SET_USER_DATA = "auth/SET-USER-DATA";
 
 let initialState = {
   userId: null,
@@ -39,50 +39,45 @@ export const setAuthUserData = (userId, email, login, isAuth = false) => {
   };
 };
 
-// Thunk Creators
-export const getAuthUserData =
-  () =>
-  // thunk
-  (dispatch) => {
-    return authAPI.me().then((response) => {
-      if (response.data.resultCode !== 0) {
-        return;
-      }
+// Thunk Creators ------------------// thunk
+export const getAuthUserData = () => async (dispatch) => {
+  let response = await authAPI.me();
 
-      let { id, login, email } = response.data.data;
+  if (response.data.resultCode !== 0) {
+    return;
+  }
 
-      dispatch(setAuthUserData(id, email, login, true));
-    });
-  };
+  let { id, login, email } = response.data.data;
 
-export const login = (email, password, rememberMe) => (dispatch) => {
-  authAPI.login(email, password, rememberMe).then((response) => {
-    if (response.data.resultCode !== 0) {
-      let serverErrorMessage =
-        response.data.messages.length > 0
-          ? response.data.messages[0]
-          : "Some error";
-
-      dispatch(
-        stopSubmit("user-login", {
-          _error: serverErrorMessage,
-        })
-      );
-      return;
-    }
-
-    dispatch(getAuthUserData());
-  });
+  dispatch(setAuthUserData(id, email, login, true));
 };
 
-export const logout = () => (dispatch) => {
-  authAPI.logout().then((response) => {
-    if (response.data.resultCode !== 0) {
-      return;
-    }
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  let response = await authAPI.login(email, password, rememberMe);
+  if (response.data.resultCode !== 0) {
+    let serverErrorMessage =
+      response.data.messages.length > 0
+        ? response.data.messages[0]
+        : "Some error";
 
-    dispatch(setAuthUserData(null, null, null, false));
-  });
+    dispatch(
+      stopSubmit("user-login", {
+        _error: serverErrorMessage,
+      })
+    );
+    return;
+  }
+
+  dispatch(getAuthUserData());
+};
+
+export const logout = () => async (dispatch) => {
+  let response = await authAPI.logout();
+  if (response.data.resultCode !== 0) {
+    return;
+  }
+
+  dispatch(setAuthUserData(null, null, null, false));
 };
 
 export default authReducer;

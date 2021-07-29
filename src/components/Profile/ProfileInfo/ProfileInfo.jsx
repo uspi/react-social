@@ -1,7 +1,6 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
-import s from "./ProfileInfo.module.css";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import style from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
@@ -9,24 +8,19 @@ const ProfileInfo = (props) => {
         return <Preloader />
     }
     return (
-        <div className={s.profileInfo}>
-
-            {/* <div className={s.cover_img}>
-                <img src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg" alt="page top cover" />
-            </div> */}
-
-            <div className={s.userInfoContainer}>
-                <div className={s.userMainInfo}>
-                    <div className={s.avatar}>
+        <div className={style.profileInfo}>
+            <div className={style.userInfoContainer}>
+                <div className={style.userMainInfo}>
+                    <div className={style.avatar}>
                         <img src={props.profile.photos.small} alt="user avatar" />
                     </div>
-                    <div className={s.descriptionContainer}>
-                        <div className={s.userName}>{props.profile.fullName}</div>
-                        <div className={s.userDescription}>{props.profile.aboutMe}</div>
+                    <div className={style.descriptionContainer}>
+                        <div className={style.userName}>{props.profile.fullName}</div>
+                        <div className={style.userDescription}>{props.profile.aboutMe}</div>
                     </div>
                 </div>
 
-                <div className={s.job}>
+                <div className={style.job}>
                     {
                         props.profile.lookingForAJob ?
                             <div>Looking for a job</div>
@@ -34,7 +28,7 @@ const ProfileInfo = (props) => {
                     }
 
                 </div>
-                <div className={s.userSocial}>
+                <div className={style.userSocial}>
 
                 </div>
                 <div>
