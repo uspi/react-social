@@ -8,23 +8,25 @@ let Users = (props) => {
     return (
         <div className={style.usersContainer}>
             <Paginator
-                totalUsersCount={props.totalUsersCount}
+                totalItemsCount={props.totalUsersCount}
                 pageSize={props.pageSize}
                 currentPage={props.currentPage}
                 onPageNumberChanged={props.onPageNumberChanged}
             />
-            {
-                props.users.map(u => (
-                    <User
-                        key={u.id}
-                        user={u}
-                        followingInProgress={props.followingInProgress}
-                        follow={props.follow}
-                        unfollow={props.unfollow}
-                        userPhoto={userPhoto}
-                    />
-                ))
-            }
+            <div>
+                {
+                    props.users.map(u => (
+                        <User
+                            key={u.id}
+                            user={u}
+                            followingInProgress={props.followingInProgress}
+                            follow={props.follow}
+                            unfollow={props.unfollow}
+                            userPhoto={userPhoto}
+                        />
+                    ))
+                }
+            </div>
         </div >
     );
 }

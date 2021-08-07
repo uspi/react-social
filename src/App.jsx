@@ -1,20 +1,25 @@
 import React from "react";
-import { Route, withRouter } from "react-router-dom";
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
 import "./App.css";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
+import { connect, Provider } from "react-redux";
+import { initializeApp } from "./redux/app-reducer"
+import { compose } from "redux";
+import store from "./redux/redux-store";
+
 import Login from "./components/Login/Login";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import Settings from "./components/Settings/Settings";
+
 import SidebarContainer from "./components/Sidebar/SidebarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import { connect } from "react-redux";
-import { initializeApp } from "./redux/app-reducer"
-import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import { withSuspense } from "./hoc/withSuspense";
+
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
 
 class App extends React.Component {
   componentDidMount() {
@@ -39,14 +44,14 @@ class App extends React.Component {
 
           <Route
             path="/profile/:userId?"
-            render={() => (
-              <ProfileContainer />
-            )}
+            render={() => withSuspense(ProfileContainer)}
           />
           <Route
             path="/dialogs"
             render={() => (
-              <DialogsContainer />
+              <React.Suspense fallback={<div className="content-area">Loading...</div>}>
+                <DialogsContainer />
+              </React.Suspense>
             )}
           />
           <Route path="/news" render={() => <News />} />
@@ -66,9 +71,23 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 })
 
-export default compose(
+// container
+let AppContainer = compose(
   withRouter,
   connect(mapStateToProps, {
     initializeApp
   }),
 )(App);
+
+// browser-router => store-provider => container
+let MainApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  );
+}
+
+export default MainApp;

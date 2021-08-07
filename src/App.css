@@ -29,6 +29,10 @@ button:hover {
   background-color: #d1d1d1;
 }
 
+.content-area{
+  grid-area: content;
+}
+
 .app-wrapper {
   overflow-y: auto;
   overflow-x: auto;
