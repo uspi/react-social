@@ -44,7 +44,11 @@ class App extends React.Component {
 
           <Route
             path="/profile/:userId?"
-            render={() => withSuspense(ProfileContainer)}
+            render={() => (
+              <React.Suspense fallback={<div className="content-area">Loading...</div>}>
+                <ProfileContainer />
+              </React.Suspense>
+            )}
           />
           <Route
             path="/dialogs"
