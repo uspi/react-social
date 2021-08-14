@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css";
-import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
+import userPhoto from "./../../../assets/images/user-no-photo.png"
+//import cn from "classnames/bind"
+import { ProfileDescriptionFormRedux } from "./ProfileDescription/ProfileDescriptionForm";
+import { ProfileDescription } from "./ProfileDescription/ProfileDescription";
+
+//const cx = cn.bind(style);
 
 const ProfileInfo = (props) => {
+    let [editMode, setEditMode] = useState(false);
+
     if (!props.profile) {
         return <Preloader />
     }
@@ -14,12 +21,15 @@ const ProfileInfo = (props) => {
         props.saveUserPhoto(e.target.files[0]);
     }
 
+    const onDescriptionFormSubmit = (formData) => {
+        props.saveProfile(formData).then(() => {
+            setEditMode(false);
+        });
+    }
+
     return (
         <div className={style.profileInfo}>
             <div className={style.userInfoContainer}>
-                <div className={style.userMainInfo}>
-                    <div className={style.avatar}>
-                        <img src={props.profile.photos.small} alt="user avatar" />
                 {/* main info */}
                 <div className={style.flexContainer_row}>
                     <div>
@@ -28,29 +38,29 @@ const ProfileInfo = (props) => {
                         </div>
                         {props.isOwner && <input type={"file"} onChange={onUserPhotoSelected} />}
                     </div>
-                    <div className={style.descriptionContainer}>
-                        <div className={style.userName}>{props.profile.fullName}</div>
-                        <div className={style.userDescription}>{props.profile.aboutMe}</div>
-                    </div>
-                </div>
-
-                <div className={style.job}>
                     {
-                        props.profile.lookingForAJob ?
-                            <div>Looking for a job</div>
-                            : null
+                        editMode ?
+                            <ProfileDescriptionFormRedux
+                                initialValues={props.profile}
+                                onSubmit={onDescriptionFormSubmit}
+                                profile={props.profile}
+                                isOwner={props.isOwner}
+                                status={props.status}
+                                updateUserStatus={props.updateUserStatus}
+                            />
+                            : <ProfileDescription
+                                profile={props.profile}
+                                isOwner={props.isOwner}
+                                status={props.status}
+                                updateUserStatus={props.updateUserStatus}
+                                activateEditMode={() => setEditMode(true)}
+                            />
                     }
-
-                </div>
-                <div className={style.userSocial}>
-
-                </div>
-                <div>
-                    <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus} />
                 </div>
             </div>
         </div>
     );
 }
+
 
 export default ProfileInfo;
