@@ -1,3 +1,10 @@
+type FriendType = {
+  id: number;
+  name: string;
+};
+type InitialStateType = typeof initialState;
+
+
 let initialState = {
   friends: [
     { id: 1, name: "Vano" },
@@ -6,10 +13,13 @@ let initialState = {
     { id: 4, name: "Andry" },
     { id: 5, name: "Dane" },
     { id: 6, name: "Kate" },
-  ],
+  ] as FriendType[],
 };
 
-const sidebarReducer = (state = initialState, action) => {
+const sidebarReducer = (
+  state = initialState,
+  action: any
+): InitialStateType => {
   return state;
 };
 
