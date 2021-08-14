@@ -35,8 +35,6 @@ const MyPosts = React.memo(props => {
   //   return nextProps !== this.props
   //     || nextState !== this.state;
   // }
-
-  console.log("my posts render");
   // get
   let postsElements = [...props.posts]
     .reverse()
