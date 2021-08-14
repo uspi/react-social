@@ -1,0 +1,12 @@
+.flexContainer_row {
+  display: flex;
+}
+
+.flexContainer_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.font_w700 {
+  font-weight: 700;
+}
