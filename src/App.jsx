@@ -70,7 +70,7 @@ class App extends React.Component {
             />
             <Route path="/news" render={() => <News />} />
             <Route path="/music" render={() => <Music />} />
-            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/users" render={() => <UsersContainer pageTitle="Users" />} />
             <Route path="/settings" render={() => <Settings />} />
             <Route path="/login" render={() => <Login />} />
             <Route
