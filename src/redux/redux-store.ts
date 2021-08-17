@@ -28,15 +28,6 @@ type RootReducerType = typeof rootReducer;
 export type AppStateType = ReturnType<RootReducerType>;
 
 /**
- * @param U infer type of object (probably function, with properties and return type)
- * @param T object with properties.
- * Example: let actions = {
- * actionOne: (arg1) => { type: "actionType", userId: arg1},
- * actionTwo: () => { type: "actionTypeTwo"}
- * @returns return infer type of action
- */
-type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never;
-/**
  * @param T an object in which values are functions.
  * Example: let actions = {
  * actionOne: (arg1) => { type: "actionType", userId: arg1},
@@ -44,9 +35,7 @@ type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never;
  * }
  * @returns enumeration of return types of functions. Example: {type: string, userId: number} | {type: string} | ...
  */
-export type InferActionsTypes<
-  T extends { [key: string]: (...args: any[]) => any }
-> = ReturnType<PropertiesTypes<T>>;
+export type InferActionsTypes<T> = T extends { [key: string]: (...args: any[]) => infer U } ? U : never;
 
 /**
  * @param A action

@@ -4,10 +4,10 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
+import { MapStateType } from "./DialogsContainer";
+import { FormSubmitHandler } from "redux-form";
 
-
-
-const Dialogs = (props) => {
+const Dialogs: React.FC<PropsType> = (props) => {
   let dialogsElements = props.dialogs.map((dialog) => (
     <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
   ));
@@ -15,9 +15,9 @@ const Dialogs = (props) => {
     <Message key={message.id} id={message.id} text={message.text} />
   ));
 
-  let addNewMessage = (formData) => {
-    console.log(formData)
-    props.sendMessage(formData.newMessageText);
+  let addNewMessage: FormSubmitHandler = (values: any) => {
+    console.log(values.newMessageBlock)
+    props.sendMessage(values.newMessageText);
   }
 
   return (
@@ -38,3 +38,7 @@ const Dialogs = (props) => {
 };
 
 export default Dialogs;
+
+type PropsType = {
+  sendMessage: (messageText: string) => void
+} & MapStateType
