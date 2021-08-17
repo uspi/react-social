@@ -2,9 +2,11 @@ import React from "react";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import s from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import { PropsType } from "./ProfileInfo/ProfileInfo";
 
-const Profile = (props) => {
+type OwnPropsType = {} & PropsType;
 
+const Profile: React.FC<OwnPropsType> = (props) => {
   return (
     <div className={s.content}>
       <ProfileInfo

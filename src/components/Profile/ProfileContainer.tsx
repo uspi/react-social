@@ -13,7 +13,7 @@ type PropsType = {
   getUserStatus: (userId: number) => void 
   updateUserStatus: (statusText: string) => void
   saveUserPhoto: (file: File) => void
-  saveProfile: (profile: ProfileType) => void
+  saveProfile: (profile: ProfileType) => Promise<void>
 } & MapStateType & RouteComponentProps<PathParamsType>
 
 type PathParamsType = {
@@ -65,7 +65,7 @@ class ProfileContainer extends React.Component<PropsType> {
 
     return (
       <Profile
-        {...this.props}
+        saveProfile={this.props.saveProfile}
         profile={this.props.profile}
         isOwner={!this.props.match.params.userId}
         status={this.props.status}

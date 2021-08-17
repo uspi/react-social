@@ -4,15 +4,15 @@ import cn from "classnames";
 type PropsType = {
   totalItemsCount: number;
   pageSize: number;
-  currentPage: number;
-  onPageNumberChanged: (pageNumber: number) => void;
+  currentPage?: number;
+  onPageNumberChanged?: (pageNumber: number) => void;
   portionSize?: number;
 };
 export const Paginator: React.FC<PropsType> = ({
   totalItemsCount,
   pageSize,
-  currentPage,
-  onPageNumberChanged,
+  currentPage = 1,
+  onPageNumberChanged = () => {},
   portionSize = 10,
 }) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize);

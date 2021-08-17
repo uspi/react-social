@@ -8,12 +8,12 @@ import { ProfileDescription } from "./ProfileDescription/ProfileDescription";
 import { ProfileType } from "../../../types/types";
 
 //const cx = cn.bind(style);
-type PropsType = {
+export type PropsType = {
   isOwner: boolean;
-  profile: ProfileType;
+  profile: ProfileType | null;
   status: string;
   
-  saveProfile: (profile: ProfileType) => Promise<any>;
+  saveProfile: (profile: ProfileType) => Promise<void>;
   saveUserPhoto: (file: File) => void;
   updateUserStatus: (status: string) => void;
 };
