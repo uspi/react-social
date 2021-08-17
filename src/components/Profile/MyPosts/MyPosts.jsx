@@ -44,7 +44,7 @@ const MyPosts = React.memo(props => {
 
   let onAddPost = (formData) => {
     console.log(formData);
-    props.addPostCreator(formData.newPostText);
+    props.addPost(formData.newPostText);
   };
 
 

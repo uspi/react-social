@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { InjectedFormProps, reduxForm } from "redux-form";
-import { login, LoginPropsType } from "../../redux/auth-reducer";
+import { login, LoginType } from "../../redux/auth-reducer";
 import { required } from "../../utils/validators/validators";
 import { createField, Input } from "../common/FormsControls/FormsControls";
 import style from "./Login.module.css";
@@ -68,12 +68,13 @@ type MapStatePropsType = {
   captchaUrl: string | null;
   isAuth: boolean;
 };
-type MapDispatchPropsType = {
-  login: LoginPropsType;
-};
-type PropsType = MapStatePropsType & MapDispatchPropsType;
 
-const Login: React.FC<PropsType> = (props) => {
+type MapDispatchPropsType = {
+  // type of login from reducer
+  login: LoginType
+};
+
+const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
   const onSubmit = (formData: any) => {
     props.login(
       formData.email,

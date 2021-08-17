@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import {
-  addPostCreator
+  actions
 } from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 
@@ -22,6 +22,4 @@ const mapStateToProps = (state) => ({
 //   }
 // }
 
-export default connect(mapStateToProps, {
- addPostCreator
-})(MyPosts);
+export default connect(mapStateToProps, {addPost: actions.addPost})(MyPosts);

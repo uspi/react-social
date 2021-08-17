@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   follow,
-  setCurrentPage,
+  
   unfollow,
-  toggleFollowingProgress,
   requestUsers,
 } from "../../redux/users-reducer";
+import {actions} from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
@@ -33,7 +33,7 @@ type MapDispatchPropsType = {
   follow: (userId: number) => void;
   unfollow: (userId: number) => void;
   requestUsers: (currentPage: number, pageSize: number) => void;
-  setCurrentPage: (pageNumber: number) => void;
+  setCurrentPage: (pageNumber: number) => any;
 };
 type OwnPropsType = {
   pageTitle: string;
@@ -85,6 +85,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
   };
 };
 
+const setCurrentPage = actions.setCurrentPage;
 export default compose(
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
     mapStateToProps,
