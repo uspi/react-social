@@ -1,7 +1,8 @@
 import React from "react";
+import { PostType } from "../../../../types/types";
 import s from "./Post.module.css";
 
-const Post = (props) => {
+const Post: React.FC<PostType> = React.memo((props) => {
     return (
         <div className={s.item}>
             <div className={s.avatar}>
@@ -16,6 +17,6 @@ const Post = (props) => {
 
         </div>
     );
-}
+});
 
 export default Post;

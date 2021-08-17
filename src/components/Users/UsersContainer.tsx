@@ -1,12 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  follow,
-  
-  unfollow,
-  requestUsers,
-} from "../../redux/users-reducer";
-import {actions} from "../../redux/users-reducer";
+import { follow, unfollow, requestUsers } from "../../redux/users-reducer";
+import { actions } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
@@ -20,26 +15,6 @@ import {
 } from "../../redux/users-selectors";
 import { UserType } from "../../types/types";
 import { AppStateType } from "../../redux/redux-store";
-
-type MapStatePropsType = {
-  currentPage: number;
-  pageSize: number;
-  isFetching: boolean;
-  totalUsersCount: number;
-  users: UserType[];
-  followingInProgress: number[];
-};
-type MapDispatchPropsType = {
-  follow: (userId: number) => void;
-  unfollow: (userId: number) => void;
-  requestUsers: (currentPage: number, pageSize: number) => void;
-  setCurrentPage: (pageNumber: number) => any;
-};
-type OwnPropsType = {
-  pageTitle: string;
-};
-
-type PropsType = OwnPropsType & MapStatePropsType & MapDispatchPropsType;
 
 class UsersContainer extends React.Component<PropsType> {
   componentDidMount() {
@@ -56,10 +31,11 @@ class UsersContainer extends React.Component<PropsType> {
   render() {
     return (
       <>
-        <h2>{this.props.pageTitle}</h2>
         {this.props.isFetching ? <Preloader /> : null}
 
         <Users
+          pageTitle="Users"
+          isFetching={this.props.isFetching}
           totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
@@ -97,3 +73,24 @@ export default compose(
     }
   )
 )(UsersContainer);
+
+// Types
+export type MapStatePropsType = {
+  currentPage: number;
+  pageSize: number;
+  isFetching: boolean;
+  totalUsersCount: number;
+  users: UserType[];
+  followingInProgress: number[];
+};
+type MapDispatchPropsType = {
+  follow: (userId: number) => void;
+  unfollow: (userId: number) => void;
+  requestUsers: (currentPage: number, pageSize: number) => void;
+  setCurrentPage: (pageNumber: number) => any;
+};
+type OwnPropsType = {
+  pageTitle: string;
+};
+
+type PropsType = OwnPropsType & MapStatePropsType & MapDispatchPropsType;

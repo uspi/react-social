@@ -2,12 +2,13 @@ import { connect } from "react-redux";
 import {
   actions
 } from "../../../redux/profile-reducer";
+import { AppStateType } from "../../../redux/redux-store";
 import MyPosts from "./MyPosts";
 
-const mapStateToProps = (state) => ({
-  posts: state.profilePage.posts,
-  newPostText: state.profilePage.newPostText
+const mapStateToProps = (state: AppStateType) => ({
+  posts: state.profilePage.posts
 });
+
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
@@ -23,3 +24,5 @@ const mapStateToProps = (state) => ({
 // }
 
 export default connect(mapStateToProps, {addPost: actions.addPost})(MyPosts);
+
+export type MapStateType = ReturnType<typeof mapStateToProps>

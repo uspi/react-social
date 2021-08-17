@@ -6,6 +6,8 @@ import User from "./User/User";
 import { UserType } from "../../types/types";
 
 type PropsType = {
+  pageTitle: string,
+  isFetching: boolean
   users: UserType[];
   totalUsersCount: number;
   pageSize: number;
@@ -17,6 +19,8 @@ type PropsType = {
 };
 
 const Users: React.FC<PropsType> = ({
+  pageTitle,
+  isFetching,
   users,
   totalUsersCount,
   pageSize,
@@ -27,7 +31,8 @@ const Users: React.FC<PropsType> = ({
   unfollow,
 }) => {
   return (
-    <div className={style.usersContainer}>
+    <div className={style.contentGridArea}>
+      <h2 className={style.contentGridArea + " " + style.pageTitle}>{pageTitle}</h2>
       <Paginator
         totalItemsCount={totalUsersCount}
         pageSize={pageSize}
@@ -42,7 +47,7 @@ const Users: React.FC<PropsType> = ({
             followingInProgress={followingInProgress}
             follow={follow}
             unfollow={unfollow}
-            userPhoto={userPhoto}
+            defaultUserPhoto={userPhoto}
           />
         ))}
       </div>

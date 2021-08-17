@@ -3,17 +3,29 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import { getUserProfile, getUserStatus, updateUserStatus, 
   saveUserPhoto, saveProfile } from "../../redux/profile-reducer"
-import { withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { compose } from "redux";
+import { AppStateType } from "../../redux/redux-store";
+import { ProfileType } from "../../types/types";
 
-class ProfileContainer extends React.Component {
+type PropsType = {
+  getUserProfile: (userId: number) => void 
+  getUserStatus: (userId: number) => void 
+  updateUserStatus: (statusText: string) => void
+  saveUserPhoto: (file: File) => void
+  saveProfile: (profile: ProfileType) => void
+} & MapStateType & RouteComponentProps<PathParamsType>
 
+type PathParamsType = {
+  userId: string
+}
 
+class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
     this.refreshProfile();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: PropsType, prevState: PropsType) {
     //let userId = this.getUserIdFromUrl() || this.getAuthorizedUserId();
 
     // without state
@@ -24,12 +36,9 @@ class ProfileContainer extends React.Component {
   }
 
   refreshProfile = () => {
-    let userId = this.getUserIdFromUrl() || this.getAuthorizedUserId();
-    let isLoginRedirect = !userId;
-
-    if (!isLoginRedirect) {
-
-
+    let userId: number | null = +this.getUserIdFromUrl() || this.getAuthorizedUserId();
+    
+    if (userId) {
       this.props.getUserProfile(userId);
       this.props.getUserStatus(userId);
     } else {
@@ -48,7 +57,7 @@ class ProfileContainer extends React.Component {
   }
 
   redirectOnAuthorization = () => {
-    // unauthorized
+    // unauthorized. TODO: replace push with redirect
     this.props.history.push("/login");
   }
 
@@ -67,7 +76,7 @@ class ProfileContainer extends React.Component {
   }
 };
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
   return {
     profile: state.profilePage.profile,
     status: state.profilePage.status,
@@ -76,7 +85,7 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default compose(
+export default compose<React.ComponentType>(
   connect(mapStateToProps, {
     getUserProfile, getUserStatus, updateUserStatus, saveUserPhoto,
     saveProfile
@@ -84,3 +93,5 @@ export default compose(
   withRouter,
   // withAuthRedirect
 )(ProfileContainer);
+
+type MapStateType = ReturnType<typeof mapStateToProps>

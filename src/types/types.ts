@@ -10,6 +10,7 @@ export type ProfileType = {
   fullName: string;
   contacts: ContactsType;
   photos: PhotosType;
+  aboutMe: string;
 };
 export type ContactsType = {
   github: string;
@@ -27,9 +28,9 @@ export type PhotosType = {
 };
 
 export type UserType = {
-    id: number;
-    name: string;
-    status: string | null;
-    photos: PhotosType;
-    followed: boolean;
-  };
+  id: number;
+  name: string;
+  status: string | null;
+  photos: PhotosType;
+  followed: boolean;
+};
