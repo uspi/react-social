@@ -1,10 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import { follow, unfollow, requestUsers } from "../../redux/users-reducer";
-import { actions } from "../../redux/users-reducer";
-import Users from "./Users";
-import Preloader from "../common/Preloader/Preloader";
-import { compose } from "redux";
+import React from 'react'
+import { connect } from 'react-redux'
+import {
+  follow,
+  unfollow,
+  requestUsers,
+  FilterType,
+} from '../../redux/users-reducer'
+import { actions } from '../../redux/users-reducer'
+import Users from './Users'
+import { compose } from 'redux'
 import {
   getCurrentPage,
   getFollowingInProgress,
@@ -12,27 +16,32 @@ import {
   getPageSize,
   getTotalUsersCount,
   getUsers,
-} from "../../redux/users-selectors";
-import { UserType } from "../../types/types";
-import { AppStateType } from "../../redux/redux-store";
+} from '../../redux/users-selectors'
+import { UserType } from '../../types/types'
+import { AppStateType } from '../../redux/redux-store'
 
 class UsersContainer extends React.Component<PropsType> {
   componentDidMount() {
-    const { currentPage, pageSize } = this.props;
-    this.props.requestUsers(currentPage, pageSize);
+    const { currentPage, pageSize, filter } = this.props
+    this.props.requestUsers(currentPage, pageSize, filter)
   }
 
   onPageNumberChanged = (pageNumber: number) => {
-    const { pageSize } = this.props;
-    this.props.requestUsers(pageNumber, pageSize);
-    this.props.setCurrentPage(pageNumber);
-  };
+    const { pageSize, filter } = this.props
+    this.props.requestUsers(pageNumber, pageSize, filter)
+    this.props.setCurrentPage(pageNumber)
+  }
+
+  onFilterChanged = (filter: FilterType) => {
+    const { pageSize } = this.props
+    // TODO: move filter logic to separate reducer
+    this.props.setCurrentPage(1)
+    this.props.requestUsers(1, pageSize, filter)
+  }
 
   render() {
     return (
       <>
-        {this.props.isFetching ? <Preloader /> : null}
-
         <Users
           pageTitle="Users"
           isFetching={this.props.isFetching}
@@ -40,13 +49,15 @@ class UsersContainer extends React.Component<PropsType> {
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           onPageNumberChanged={this.onPageNumberChanged}
+          onFilterChanged={this.onFilterChanged}
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
           followingInProgress={this.props.followingInProgress}
+          filter={this.props.filter}
         />
       </>
-    );
+    )
   }
 }
 
@@ -58,10 +69,11 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     currentPage: getCurrentPage(state),
     isFetching: getIsFetching(state),
     followingInProgress: getFollowingInProgress(state),
-  };
-};
+    filter: state.usersPage.filter,
+  }
+}
 
-const setCurrentPage = actions.setCurrentPage;
+const setCurrentPage = actions.setCurrentPage
 export default compose(
   connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
     mapStateToProps,
@@ -72,25 +84,30 @@ export default compose(
       requestUsers,
     }
   )
-)(UsersContainer);
+)(UsersContainer)
 
 // Types
 export type MapStatePropsType = {
-  currentPage: number;
-  pageSize: number;
-  isFetching: boolean;
-  totalUsersCount: number;
-  users: UserType[];
-  followingInProgress: number[];
-};
+  currentPage: number
+  pageSize: number
+  isFetching: boolean
+  totalUsersCount: number
+  users: UserType[]
+  followingInProgress: number[]
+  filter: FilterType
+}
 type MapDispatchPropsType = {
-  follow: (userId: number) => void;
-  unfollow: (userId: number) => void;
-  requestUsers: (currentPage: number, pageSize: number) => void;
-  setCurrentPage: (pageNumber: number) => any;
-};
+  follow: (userId: number) => void
+  unfollow: (userId: number) => void
+  requestUsers: (
+    currentPage: number,
+    pageSize: number,
+    filter: FilterType
+  ) => void
+  setCurrentPage: (pageNumber: number) => any
+}
 type OwnPropsType = {
-  pageTitle: string;
-};
+  pageTitle: string
+}
 
-type PropsType = OwnPropsType & MapStatePropsType & MapDispatchPropsType;
+type PropsType = OwnPropsType & MapStatePropsType & MapDispatchPropsType

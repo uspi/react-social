@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import style from "./Paginator.module.css";
-import cn from "classnames";
+import React, { useState } from 'react'
+import style from './Paginator.module.css'
+import cn from 'classnames'
 type PropsType = {
-  totalItemsCount: number;
-  pageSize: number;
-  currentPage?: number;
-  onPageNumberChanged?: (pageNumber: number) => void;
-  portionSize?: number;
-};
+  totalItemsCount: number
+  pageSize: number
+  currentPage?: number
+  onPageNumberChanged?: (pageNumber: number) => void
+  portionSize?: number
+}
 export const Paginator: React.FC<PropsType> = ({
   totalItemsCount,
   pageSize,
@@ -15,17 +15,17 @@ export const Paginator: React.FC<PropsType> = ({
   onPageNumberChanged = () => {},
   portionSize = 10,
 }) => {
-  let pagesCount = Math.ceil(totalItemsCount / pageSize);
+  let pagesCount = Math.ceil(totalItemsCount / pageSize)
 
-  let pages = [] as number[];
+  let pages = [] as number[]
   for (let i = 1; i <= pagesCount; i++) {
-    pages = [...pages, i];
+    pages = [...pages, i]
   }
 
-  let portionCount = Math.ceil(pagesCount / portionSize);
-  let [portionNumber, setPortionNumber] = useState(1);
-  let leftLimitPageNumber = (portionNumber - 1) * portionSize + 1;
-  let rightLimitPageNumber = portionNumber * portionSize;
+  let portionCount = Math.ceil(pagesCount / portionSize)
+  let [portionNumber, setPortionNumber] = useState(1)
+  let leftLimitPageNumber = (portionNumber - 1) * portionSize + 1
+  let rightLimitPageNumber = portionNumber * portionSize
 
   return (
     <div className={style.paginationButtonsContainer}>
@@ -34,7 +34,7 @@ export const Paginator: React.FC<PropsType> = ({
         portionNumber > 1 && (
           <button
             onClick={() => {
-              setPortionNumber(portionNumber - 1);
+              setPortionNumber(portionNumber - 1)
             }}
           >
             prev
@@ -58,7 +58,7 @@ export const Paginator: React.FC<PropsType> = ({
             >
               {p}
             </span>
-          );
+          )
         })}
 
       {
@@ -70,7 +70,7 @@ export const Paginator: React.FC<PropsType> = ({
         )
       }
     </div>
-  );
-};
+  )
+}
 
-export default React.memo(Paginator);
+export default React.memo(Paginator)
